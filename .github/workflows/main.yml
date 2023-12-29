@@ -21,7 +21,7 @@ jobs:
       - name: Build the artifact
         run: mvn -B package --file pom.xml
       - name: Printing generate artifact name
-        run: find artifact-path-of-your/choice -f execdir echo '{}' ';'
+        run: find target/*.jar type-f execdir echo '{}' ';'
       - uses: actions/upload-artifact@v4
         with:
          name: my-artifact
