@@ -6,6 +6,11 @@ on:
     branches: [ "main" ]
   workflow_dispatch:
 jobs:
+  info: 
+    runs-on: ubuntu-latest
+    steps:
+    - name: Print Info
+      run: echo '{{github.event}}'
   build:
     runs-on: ubuntu-latest
     steps:
