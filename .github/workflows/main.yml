@@ -24,7 +24,7 @@ jobs:
         run: |
           build_number=$(echo "${GITHUB_RUN_NUMBER}" | tr -d '\n')
           jar_name=$(ls target/*.jar | head -n 1)
-          mv "${jar_file}" "${jar_name%.*}-bn-${build_number}.jar"
+          mv "${jar_name}" "${jar_name%.*}-bn-${build_number}.jar"
           artifact_name="${jar_name}-bn-${build_number}"
           
           echo "Uploading artifact: ${artifact_name}"
