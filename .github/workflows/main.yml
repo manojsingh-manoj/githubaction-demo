@@ -22,6 +22,7 @@ jobs:
           echo test, and deploy your project.
           java -version
   deploy:
+    needs: build
     runs-on: self-hosted
     steps:
      - name: print hello world
