@@ -20,8 +20,11 @@ jobs:
           repository: manojsingh-manoj/SpringBEx
       - name: Build the artifact
         run: mvn -B package --file pom.xml
-      - name: Printing generate artifact name
-        run: find target/*.jar type-f execdir echo '{}' ';'
+      - name: Rename JAR with Build Number
+        run: |
+          build_number=$(echo "${GITHUB_RUN_NUMBER}" | tr -d '\n')
+          jar_file=$(ls target/*.jar | head -n 1)
+          mv "${jar_file}" "${jar_file%.*}-${build_number}.jar"
       - uses: actions/upload-artifact@v4
         with:
          name: my-artifact
