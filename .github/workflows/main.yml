@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Print Info
-      run: echo ${{github}}
+      run: echo {{github}}
   build:
     runs-on: ubuntu-latest
     steps:
