@@ -21,3 +21,9 @@ jobs:
           echo Add other actions to build,
           echo test, and deploy your project.
           java -version
+  deploy:
+    runs-on: self-hosted
+    steps:
+     - name: print hello world
+       run: echo "Hello, this is deploy job"
+   
