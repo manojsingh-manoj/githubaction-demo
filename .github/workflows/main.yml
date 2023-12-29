@@ -1,6 +1,6 @@
 # This is a basic workflow to help you get started with Actions
 
-name: CI
+name: CI Demo
 on:
   push:
     branches: [ "main" ]
@@ -9,32 +9,26 @@ jobs:
   info: 
     runs-on: ubuntu-latest
     steps:
-    - name: Print Info
+    - name: Printing the Context
       run: echo "${{ toJSON(github) }}"
   build:
+    needs: info
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
         with:
           repository: manojsingh-manoj/SpringBEx
-      - name: Build with Maven
+      - name: Build the artifact
         run: mvn -B package --file pom.xml
       - uses: actions/upload-artifact@v4
         with:
          name: my-artifact
          path: target/*.jar
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo Hello, world!
-      # Runs a set of commands using the runners shell
       - name: Run a multi-line script
-        run: |
-          echo Add other actions to build,
-          echo test, and deploy your project.
-          java -version
+        run:  java -version
   deploy:
     needs: build
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     steps:
      - name: print hello world
        run: echo "Hello, this is deploy job"
